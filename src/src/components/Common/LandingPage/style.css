@@ -1,0 +1,144 @@
+.mainSection{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding:1.5rem 2rem;
+}
+.section-heading ,
+.section-heading-2{
+    font-size: 6rem;
+    margin:0px;
+}
+.section-heading{
+    color: var(--lightBlue);
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: var(--lightBlue);
+}
+.section-heading:hover{
+    color: var(--darkBlue);
+    -webkit-text-stroke-color: var(--lightBlue);
+    transition: all 0.3s;
+}
+
+.section-heading-2{
+    color: var(--lightBlue);
+}
+p{
+    margin-left: 0.2rem;
+    font-size: 1rem;
+    color:var(--midBlue);
+}
+
+.button{
+    display: flex;
+    justify-content: flex-start;
+    gap:1.5rem;
+    align-items: center;
+    margin-top: 2.5rem;
+}
+
+.rightSection{
+    width:40%;
+    position:relative;
+}
+
+.phone-img{
+    position: absolute;
+    min-width:250px;
+    max-width:300px;
+    width:50%;
+    aspect-ratio:2/3;
+    z-index: 100;
+    right:1.5rem;
+    top: 1rem;
+}
+.gradient-img{
+    position: absolute;
+    min-width:210px;
+    width:40%;
+    aspect-ratio:1.7/3;
+    border-radius: 2rem;
+    right:1rem;
+    top: 4rem;
+}
+
+@media only Screen and (max-width:1040px){
+    .section-heading ,
+    .section-heading-2{
+        font-size: 5rem;
+        margin:0px;
+    }
+    .phone-img{
+        min-width:250px;
+    }
+    .gradient-img{
+        min-width:200px;
+        top: 3.5rem;
+    }
+
+}
+
+@media only Screen and (max-width:900px){
+    .mainSection{
+        flex-direction: column;
+        padding:0.5rem 2rem;
+        gap:1rem;
+        align-items: center;
+        height:110vh;
+    }
+    .leftSection{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    p{
+        text-align: center;
+    }
+
+    .rightSection{
+      align-items: center;
+      margin:0px auto !important;
+      margin:auto;
+    }
+    .phone-img{
+        position: relative;
+        top: 2rem;
+        left:2rem;
+    }
+    .gradient-img{
+        top: 3.5rem;
+        left:4rem;
+    }
+    
+}
+
+@media only Screen and (max-width:600px){
+    .section-heading ,
+    .section-heading-2{
+        font-size: 4rem;
+        margin:0px;
+    }
+    .phone-img{
+        left:0rem;
+    }
+    .gradient-img{
+        left: 2rem;
+    }
+    
+}
+@media only Screen and (max-width:400px){
+    .mainSection{
+        gap:0.5rem;
+    }
+    .section-heading ,
+    .section-heading-2{
+        font-size: 3rem;
+    }
+    .phone-img{
+        left:-3rem;
+    }
+    .gradient-img{
+        left:-1rem !important;
+    }
+    
+}

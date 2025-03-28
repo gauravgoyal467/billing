@@ -1,0 +1,26 @@
+.select{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0.5rem 2rem;
+  margin:auto;
+  gap:0.5rem;
+}
+
+.upload{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--darkBlue);
+  color:var(--white);
+  padding:14px;
+  border-radius: 5rem;
+  width: 100px;
+  cursor: pointer;
+}
+
+.upload :hover{
+  background-color: var(--white);
+  color:var(--darkBlue);
+  border-radius: 5rem;
+}

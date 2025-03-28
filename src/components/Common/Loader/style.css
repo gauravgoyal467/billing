@@ -1,0 +1,11 @@
+.loader{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--darkBlue);
+    width:100vw;
+    margin-top:1.5rem;
+    background-color: var(--white);
+    position: absolute;
+    z-index: 1000;
+}
