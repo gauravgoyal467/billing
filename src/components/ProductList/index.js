@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 import { useNavigate } from 'react-router-dom';
 
 const ProductList = ({ products, onDelete }) => {
@@ -74,7 +74,7 @@ const ProductList = ({ products, onDelete }) => {
       ];
 
       // Add headers to PDF
-      doc.autoTable({
+      autoTable(doc,{
         head: [headers],
         body: productArr.map((product, index) => [
           index + 1,
