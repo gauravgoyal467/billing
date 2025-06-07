@@ -1,119 +1,199 @@
 .finalproduct-list {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    margin: 20px auto;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .finalproduct-list span {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 10px;
-    display: inline-block;
-  }
-  
-  .product-table {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 20px auto;
+  font-family: monospace !important;
+}
+
+.finalproduct-list span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.product-table th,
+.product-table td {
+  padding: 12px 15px;
+  border: 1px solid #000000;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.product-table th {
+  background-color: white;
+  color:black;
+  font-weight: bold;
+}
+
+.product-table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.product-table td {
+  color: #000000;
+}
+
+.product-table td:last-child {
+  font-weight: 600;
+  color: #4caf50;
+}
+
+/* Total Payable Styling */
+.total-payable {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+  /* Align to the right */
+  padding: 0px 10px;
+}
+
+.round-off {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+  /* Align to the right */
+  padding: 0px 10px;
+}
+
+.total-payable span {
+  font-size: 18px !important;
+  color: var(--midBlue);
+}
+
+.round-off span {
+  font-size: 16px !important;
+  color: var(--midBlue);
+}
+
+
+.delete-btn {
+  color: var(--red);
+}
+
+.shop-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.shop-info-left input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 200px;
+  font-size: 16px !important;
+  background-color: #f8f9fa;
+  color: var(--midBlue);
+}
+
+.shop-info-right span {
+  font-size: 16px !important;
+  color: var(--midBlue);
+}
+
+.bill-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  width: 100%;
+  justify-content: center;
+}
+
+.bill-actions button {
+  background-color: var(--midBlue);
+  color: var(--white);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.bill-actions button:hover {
+  background-color: var(--darkBlue);
+}
+
+@media only Screen and (max-width:400px) {
+  .table-container {
     width: 100%;
+    overflow-x: scroll;
+  }
+
+  .table-container::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .table-container::-webkit-scrollbar-track {
+    background: #dad5d5;
+  }
+
+  .table-container::-webkit-scrollbar-thumb {
+    background: #8d8b8b;
+    border-radius: 4px;
+  }
+
+  .table-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+  .product-table {
+    width: 400px;
     border-collapse: collapse;
     margin-top: 20px;
   }
-  
+
   .product-table th,
   .product-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    text-align: center;
-    font-size: 0.95rem;
-  }
-  
-  .product-table th {
-    background-color: #4caf50;
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  .product-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .product-table tr:hover {
-    background-color: #f1f1f1;
-    transition: background-color 0.3s ease;
-  }
-  
-  .product-table td {
-    color: #555;
-  }
-  
-  .product-table td:last-child {
-    font-weight: 600;
-    color: #4caf50;
-  }
-  
-  /* Total Payable Styling */
-  .total-payable {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: flex-end; /* Align to the right */
-    padding: 10px;
-  }
-  
-  .total-payable span {
-    font-size: 18px !important;
-    color: var(--midBlue);
-  }
- 
- 
-  .delete-btn{
-    color:var(--red);
+    font-size: 0.7rem;
   }
 
-  .shop-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  .product-table th {
+    font-weight: 500;
   }
-  
+
+  .total-payable .round-off {
+    font-size: 1rem;
+  }
+
+  .total-payable span {
+    font-size: 14px !important;
+  }
+
+  .round-off span {
+    font-size: 12px !important;
+
+  }
+
   .shop-info-left input {
-    display: block;
-    margin-bottom: 10px;
-    padding: 5px;
-    width: 200px;
-    font-size: 16px !important;
-    background-color:#f8f9fa;
-    color:var(--midBlue);
-    text-decoration: underline;
+    width: 150px;
+    font-size: 12px !important;
   }
-  
+
   .shop-info-right span {
-   font-size: 16px !important;
-   color: var(--midBlue);
+    font-size: 12px !important;
   }
 
   .bill-actions {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .bill-actions button {
-    background-color:var(--midBlue);
-    color: var(--white);
-    padding: 12px 25px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
+    gap: 10px;
   }
 
-  .bill-actions button:hover {
-    background-color:var(--darkBlue);
-  }  
+  .bill-actions button {
+    padding: 8px !important;
+    font-size: 12px !important;
+  }
+}

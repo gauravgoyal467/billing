@@ -52,7 +52,7 @@ const DeleteMedicine = () => {
         setAlertMessage("");
         setOpen(false);
         navigate("/dashboard");
-      }, 2000);
+      }, 1000);
     }
   };
 

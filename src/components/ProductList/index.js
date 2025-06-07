@@ -78,7 +78,7 @@ const ProductList = ({ products, onDelete }) => {
         head: [headers],
         body: productArr.map((product, index) => [
           index + 1,
-          `${product.quantity} ${product.Deal && product.Deal !== 'Nodeal' ? `(${product.Deal})` : ''}`,
+          `${product.quantity} ${product.Deal && product.Deal !== 'No Deal' && product.Deal !== '' ? `(${product.Deal})` : ''}`,
           product.Name,
           product.MRP,
           product.Packing,
@@ -148,53 +148,58 @@ const ProductList = ({ products, onDelete }) => {
           <span>{new Date().toLocaleString()}</span>
         </div>
       </div>
-      <table className="product-table">
-        <thead>
-          <tr>
-            <th>S.No</th>
-            <th>Qty+Free</th>
-            <th>Product</th>
-            <th>M.R.P.</th>
-            <th>Pack</th>
-            <th>Company</th>
-            <th>Rate</th>
-            <th>Disc%</th>
-            <th>I.C.</th>
-            <th>Net Rate</th>
-            <th>Net Amt.</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {productArr.map((product, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>
-                {product.quantity}
-                {product.Deal && product.Deal !== 'Nodeal' && product.Deal !== '' ? ` (${product.Deal})` : ''}
-              </td>
-              <td>{product.Name}</td>
-              <td>{product.MRP}</td>
-              <td>{product.Packing}</td>
-              <td>{product.CompanyName}</td>
-              <td>{product.Rate || ''}</td>
-              <td>{product.Disc || ''}</td>
-              <td>{product.Tax || ''}</td>
-              <td>{product.netRate || ''}</td>
-              <td>{product.finalAmount || ''}</td>
-              <td>
-                <div className="delete-btn" onClick={() => handleDelete(index)}>
-                  <DeleteIcon />
-                </div>
-              </td>
+      <div className='table-container'>
+        <table className="product-table">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Qty(Free)</th>
+              <th>Product</th>
+              <th>M.R.P.</th>
+              <th>Pack</th>
+              <th>Company</th>
+              <th>Rate</th>
+              <th>Disc%</th>
+              <th>I.C.</th>
+              <th>Net Rate</th>
+              <th>Net Amt.</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-
+          </thead>
+          <tbody>
+            {productArr.map((product, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>
+                  {product.quantity}
+                  {product.Deal && product.Deal !== 'No Deal' && product.Deal !== '' ? ` (${product.Deal})` : ''}
+                </td>
+                <td>{product.Name}</td>
+                <td>{product.MRP}</td>
+                <td>{product.Packing}</td>
+                <td>{product.CompanyName}</td>
+                <td>{product.Rate || ''}</td>
+                <td>{product.Disc || ''}</td>
+                <td>{product.Tax || ''}</td>
+                <td>{product.netRate || ''}</td>
+                <td>{product.finalAmount || ''}</td>
+                <td>
+                  <div className="delete-btn" onClick={() => handleDelete(index)}>
+                    <DeleteIcon />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="total-payable">
-        <span>Total Payable : </span>
+        <span>Total Amount : </span>
         <span>{calculateTotalPayable().toFixed(2)}</span>
+      </div>
+      <div className="round-off">
+        <span>Round Off : </span>
+        <span>{Math.round(calculateTotalPayable()).toFixed(2)}</span>
       </div>
       <div className="bill-actions">
         <button onClick={handleClearInvoice}>Clear Invoice</button>

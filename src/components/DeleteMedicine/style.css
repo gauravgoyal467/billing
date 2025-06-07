@@ -78,3 +78,11 @@
 .modal-actions .green:hover {
     background-color: var(--darkGreen);
 }
+
+
+@media only Screen and (max-width:400px) {
+  .modal-content {
+    max-width: 300px !important;
+    max-height: 500px !important;
+  }
+}

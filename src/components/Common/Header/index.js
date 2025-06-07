@@ -5,27 +5,23 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="nav">
+    <header className="nav">
       <h1 className="logo">
-        Billing App<span style={{color: "var(--blue)"}}>.</span>
+        Billing App<span style={{ color: "var(--blue)" }}>.</span>
       </h1>
-      <div className="links">
+      <nav className="links">
         <NavLink to="/" className="link">
-          <span>Home</span>
+          Home
         </NavLink>
-        <NavLink to="/Billing" className="link">
-          <span>Billing</span>
+        <NavLink to="/billing" className="link" >
+          Billing
         </NavLink>
-        <NavLink  to="/dashboard" className="link">
-          <Button 
-            text={"Dashboard"} 
-            outlined={true}
-          />
+        <NavLink to="/dashboard" className="link">
+          <Button text="Dashboard" outlined />
         </NavLink>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
-
 
 export default Header;

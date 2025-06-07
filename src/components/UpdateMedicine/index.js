@@ -102,18 +102,6 @@ const UpdateMedicine = () => {
           onChange={(e) => setMedicine({ ...medicine, MRP: e.target.value })}
           fullWidth
         />
-        {/* <TextField
-          label="Expiry Date"
-          value={medicine.ExpDate}
-          onChange={(e) => setMedicine({ ...medicine, ExpDate: e.target.value })}
-          fullWidth
-        />
-        <TextField
-          label="Batch No"
-          value={medicine.BatchNo}
-          onChange={(e) => setMedicine({ ...medicine, BatchNo: e.target.value })}
-          fullWidth
-        /> */}
         <div className="modal-actions">
           <Button onClick={handleUpdate} className={"blue"}>Update</Button>
           <Button onClick={handleCancel} className={"red"}>Cancel</Button>

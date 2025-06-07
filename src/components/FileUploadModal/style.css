@@ -32,15 +32,16 @@
 }
 
 #cross:hover {
-  color:var(--red);
+  color: var(--red);
 }
 
 /* Modal Body */
 .modal-body {
   margin-bottom: 20px;
   font-size: 16px;
-  color:var(--blurColor);
+  color: var(--blurColor);
 }
+
 .modal-body p {
   margin: 5px 0;
 }
@@ -48,7 +49,7 @@
 .modal-actions {
   display: flex;
   justify-content: space-between;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .modal-actions button {
@@ -72,7 +73,7 @@
 
 .modal-actions .green {
   background-color: var(--green);
-  color:var(--white);
+  color: var(--white);
 }
 
 .modal-actions .green:hover {
@@ -97,7 +98,7 @@
 .file-input-button {
   padding: 6px 12px;
   background-color: var(--green);
-  color:var(--white);
+  color: var(--white);
   font-size: 16px;
   font-weight: 600;
   border: none;
@@ -123,3 +124,9 @@
   background-color: var(--white);
 }
 
+
+@media only Screen and (max-width:400px) {
+  .file-input-wrapper {
+    max-width: 200px;
+  }
+}
