@@ -4,7 +4,7 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } 
 const Popup = ({ product, onClose, onSave }) => {
   const [quantity, setQuantity] = useState(1);
   const [mrp, setMrp] = useState(product.MRP || 0);
-  const [deal, setDeal] = useState(product.Deal || 'No Deal');
+  const [deal, setDeal] = useState(product.Deal || 'NODEAL');
   const [less, setLess] = useState(23);
   const [disc, setDisc] = useState(0);
 

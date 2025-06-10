@@ -41,27 +41,21 @@ const ProductList = ({ products, onDelete }) => {
       const doc = new jsPDF();
       const pageWidth = doc.internal.pageSize.width;
 
+      doc.setFont('courier', 'bold');
       doc.setFontSize(12);
-      doc.setTextColor(38, 108, 153);
+      doc.setTextColor(0, 0, 0);
       // Shop Name - Left aligned
       doc.text(`${shopName}`, 14, 10);
-
       // Shop Address - Left aligned
-      doc.setFontSize(12);
-      doc.setTextColor(38, 108, 153);
       doc.text(`${shopAddress}`, 14, 16);
 
       // "Challan" - Centered
-      doc.setFontSize(12);
-      doc.setTextColor(209, 135, 56);
       const challanText = "Challan";
       const challanWidth = doc.getTextWidth(challanText);
       const centerX = (pageWidth - challanWidth) / 2;
       doc.text(challanText, centerX, 16);
 
       // Date - Right aligned
-      doc.setFontSize(10);
-      doc.setTextColor(0, 0, 0);
       const dateText = `Date: ${new Date().toLocaleString()}`;
       const dateWidth = doc.getTextWidth(dateText);
       const rightX = pageWidth - dateWidth - 16;
@@ -69,8 +63,8 @@ const ProductList = ({ products, onDelete }) => {
 
       // Adding table headers
       const headers = [
-        'S.No', 'Qty+Free', 'Product', 'M.R.P.', 'Pack', 'Company',
-        'Rate', 'Disc%', 'I.C.', 'Net Rate', 'Net Amt.'
+        'S.NO', 'QTY\n(FREE)', 'PRODUCT', 'M.R.P.', 'PACK', 'COMPANY',
+        'RATE', 'DISC%', 'I.C.', 'NET RATE', 'NET AMT.'
       ];
 
       // Add headers to PDF
@@ -78,7 +72,7 @@ const ProductList = ({ products, onDelete }) => {
         head: [headers],
         body: productArr.map((product, index) => [
           index + 1,
-          `${product.quantity} ${product.Deal && product.Deal !== 'No Deal' && product.Deal !== '' ? `(${product.Deal})` : ''}`,
+          `${product.quantity} ${product.Deal && product.Deal !== 'NODEAL' && product.Deal !== '' ? `(${product.Deal})` : ''}`,
           product.Name,
           product.MRP,
           product.Packing,
@@ -93,29 +87,45 @@ const ProductList = ({ products, onDelete }) => {
         theme: 'grid',
         styles: {
           fontSize: 10,
+          fontStyle: 'bold',
+          font: 'courier',
+          textColor: [0, 0, 0],
+          fillColor: [255, 255, 255], // white background
           cellPadding: 2,
+          lineWidth: 0.1,
+          lineColor: [0, 0, 0],
           valign: 'middle',
           halign: 'start'
         },
         headStyles: {
-          fontSize: 10,
+          fontSize: 9,
           fontStyle: 'bold',
-          textColor: [64, 64, 64],
+          font: 'courier',
+          textColor: [0, 0, 0],
           fillColor: [255, 255, 255],
           halign: 'center',
           lineWidth: 0.1,
-          lineColor: [0, 0, 0]
+          lineColor: [0, 0, 0],
+        },
+        alternateRowStyles: {
+          fillColor: [255, 255, 255] // keep rows clean white
         },
         tableLineColor: [0, 0, 0],
-        tableLineWidth: 0.1
+        tableLineWidth: 0.2
       });
 
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      const totalPayableText = `Total Payable: ${calculateTotalPayable().toFixed(2)}`;
       const margin = 18;
-      const totalPayableX = pageWidth - margin - doc.getTextWidth(totalPayableText);
-      doc.text(totalPayableText, totalPayableX, doc.lastAutoTable.finalY + 10);
+      doc.setTextColor(0, 0, 0);
+      
+      doc.setFontSize(10);
+      const subTotalText = `Sub Total: ${calculateTotalPayable().toFixed(2)}`;
+      const subTotalX = pageWidth - margin - doc.getTextWidth(subTotalText);
+      doc.text(subTotalText, subTotalX, doc.lastAutoTable.finalY + 10);
+      
+      doc.setFontSize(12);
+      const netPayableText = `Net Payable: ${Math.round(calculateTotalPayable()).toFixed(2)}`;  
+      const netPayableX = pageWidth - margin - doc.getTextWidth(netPayableText);
+      doc.text(netPayableText, netPayableX, doc.lastAutoTable.finalY + 16);
 
       // Save the generated PDF
       const formattedDate = new Date().toLocaleDateString().replace(/\//g, '-');
@@ -172,7 +182,7 @@ const ProductList = ({ products, onDelete }) => {
                 <td>{index + 1}</td>
                 <td>
                   {product.quantity}
-                  {product.Deal && product.Deal !== 'No Deal' && product.Deal !== '' ? ` (${product.Deal})` : ''}
+                  {product.Deal && product.Deal !== 'NODEAL' && product.Deal !== '' ? ` (${product.Deal})` : ''}
                 </td>
                 <td>{product.Name}</td>
                 <td>{product.MRP}</td>
@@ -194,11 +204,11 @@ const ProductList = ({ products, onDelete }) => {
         </table>
       </div>
       <div className="total-payable">
-        <span>Total Amount : </span>
+        <span>Sub Total : </span>
         <span>{calculateTotalPayable().toFixed(2)}</span>
       </div>
       <div className="round-off">
-        <span>Round Off : </span>
+        <span>Net Payable : </span>
         <span>{Math.round(calculateTotalPayable()).toFixed(2)}</span>
       </div>
       <div className="bill-actions">

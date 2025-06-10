@@ -63,7 +63,7 @@ const ListLayout = ({ medicine }) => {
             <div className="detail">
                 <Tooltip title="Deal" placement="bottom-end">
                     <td className="medicine-detail-list">
-                        {medicine.Deal ? <span>{medicine.Deal}</span> : <span> No Deal</span>}
+                        {medicine.Deal ? <span>{medicine.Deal}</span> : <span> NODEAL</span>}
                     </td>
                 </Tooltip>
             </div>

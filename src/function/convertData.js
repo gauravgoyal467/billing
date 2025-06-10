@@ -6,7 +6,7 @@ const convertData = (updatedProduct) => {
     let undaulteredRate = rate;
 
     // Step 2: Adjust rate based on the deal (if valid)
-    if (updatedProduct.Deal && updatedProduct.Deal !== "No Deal" && updatedProduct.Deal !== "") {
+    if (updatedProduct.Deal && updatedProduct.Deal !== "NODEAL" && updatedProduct.Deal !== "") {
         const dealParts = updatedProduct.Deal.split("+");
         if (dealParts.length === 2) {
             const dealQuantity = parseInt(dealParts[0].trim());

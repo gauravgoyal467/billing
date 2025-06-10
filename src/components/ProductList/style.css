@@ -52,7 +52,7 @@
 /* Total Payable Styling */
 .total-payable {
   margin-top: 20px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   display: flex;
   justify-content: flex-end;
@@ -61,8 +61,6 @@
 }
 
 .round-off {
-  font-size: 1.2rem;
-  font-weight: 600;
   display: flex;
   justify-content: flex-end;
   /* Align to the right */
@@ -70,7 +68,7 @@
 }
 
 .total-payable span {
-  font-size: 18px !important;
+  font-size: 14px !important;
   color: var(--midBlue);
 }
 
@@ -166,11 +164,11 @@
     font-weight: 500;
   }
 
-  .total-payable .round-off {
-    font-size: 1rem;
+  .total-payable  span {
+    font-size: 12px !important;
   }
 
-  .total-payable span {
+  .round-off span {
     font-size: 14px !important;
   }
 
