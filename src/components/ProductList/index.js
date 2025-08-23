@@ -42,20 +42,26 @@ const ProductList = ({ products, onDelete }) => {
       const pageWidth = doc.internal.pageSize.width;
 
       doc.setFont('courier', 'bold');
-      doc.setFontSize(12);
+      doc.setFontSize(10);
       doc.setTextColor(0, 0, 0);
       // Shop Name - Left aligned
       doc.text(`${shopName}`, 14, 10);
       // Shop Address - Left aligned
+      doc.setFontSize(10);
+      doc.setTextColor(0, 0, 0);
       doc.text(`${shopAddress}`, 14, 16);
 
       // "Challan" - Centered
+      doc.setFontSize(12);
+      doc.setTextColor(0, 0, 0);
       const challanText = "Challan";
       const challanWidth = doc.getTextWidth(challanText);
       const centerX = (pageWidth - challanWidth) / 2;
       doc.text(challanText, centerX, 16);
 
       // Date - Right aligned
+      doc.setFontSize(10);
+      doc.setTextColor(0, 0, 0);
       const dateText = `Date: ${new Date().toLocaleString()}`;
       const dateWidth = doc.getTextWidth(dateText);
       const rightX = pageWidth - dateWidth - 16;
@@ -63,10 +69,9 @@ const ProductList = ({ products, onDelete }) => {
 
       // Adding table headers
       const headers = [
-        'S.NO', 'QTY\n(FREE)', 'PRODUCT', 'M.R.P.', 'PACK', 'COMPANY',
-        'RATE', 'DISC%', 'I.C.', 'NET RATE', 'NET AMT.'
+        'S.No', 'Qty+Free', 'Product', 'M.R.P.', 'Pack', 'Company',
+        'Rate', 'Disc%', 'I.C.', 'Net Rate', 'Net Amt.'
       ];
-
       // Add headers to PDF
       autoTable(doc,{
         head: [headers],
@@ -84,48 +89,61 @@ const ProductList = ({ products, onDelete }) => {
           product.finalAmount || ''
         ]),
         startY: 22,
-        theme: 'grid',
         styles: {
           fontSize: 10,
-          fontStyle: 'bold',
-          font: 'courier',
-          textColor: [0, 0, 0],
-          fillColor: [255, 255, 255], // white background
-          cellPadding: 2,
-          lineWidth: 0.1,
-          lineColor: [0, 0, 0],
+          cellPadding: 1,
           valign: 'middle',
           halign: 'start'
         },
         headStyles: {
-          fontSize: 9,
+          fontSize: 10,
           fontStyle: 'bold',
-          font: 'courier',
           textColor: [0, 0, 0],
           fillColor: [255, 255, 255],
           halign: 'center',
-          lineWidth: 0.1,
           lineColor: [0, 0, 0],
+          lineWidth: { top: 0, right: 0, bottom: 0.5, left: 0 }
+        },
+        bodyStyles: {
+          fillColor: [255, 255, 255],
+          textColor: 20,
+          lineWidth: 0
         },
         alternateRowStyles: {
-          fillColor: [255, 255, 255] // keep rows clean white
+          fillColor: [255, 255, 255]
         },
         tableLineColor: [0, 0, 0],
-        tableLineWidth: 0.2
+        tableLineWidth: 0.1
       });
 
-      const margin = 18;
-      doc.setTextColor(0, 0, 0);
-      
+      const total = calculateTotalPayable().toFixed(2);
+      const finalAmount = Math.round(total).toFixed(2);
+      const roundOff = (finalAmount - total).toFixed(2);
+      const startY = doc.lastAutoTable.finalY + 6;
+
+      // Total Amount
       doc.setFontSize(10);
-      const subTotalText = `Sub Total: ${calculateTotalPayable().toFixed(2)}`;
-      const subTotalX = pageWidth - margin - doc.getTextWidth(subTotalText);
-      doc.text(subTotalText, subTotalX, doc.lastAutoTable.finalY + 10);
-      
-      doc.setFontSize(12);
-      const netPayableText = `Net Payable: ${Math.round(calculateTotalPayable()).toFixed(2)}`;  
-      const netPayableX = pageWidth - margin - doc.getTextWidth(netPayableText);
-      doc.text(netPayableText, netPayableX, doc.lastAutoTable.finalY + 16);
+      const totalPayableText = `Total Sum: ${total}`;
+      const totalPayableX = pageWidth - 18 - doc.getTextWidth(totalPayableText);
+      doc.text(totalPayableText, totalPayableX, startY);
+
+      // Round Off
+      doc.setFontSize(9);
+      const roundOffText = `Round off:  ${roundOff}`;
+      const roundOffX = pageWidth - 18 - doc.getTextWidth(roundOffText);
+      doc.text(roundOffText, roundOffX, startY + 4);
+
+
+      // Horizontal line after Round Off
+      doc.setDrawColor(0);
+      doc.setLineWidth(0.2);
+      doc.line(pageWidth - 60, startY + 6, pageWidth - 16, startY + 6);
+
+      // Final Amount
+      doc.setFontSize(10);
+      const finalAmtText = `Final Amount : ${finalAmount}`;
+      const finalAmtX = pageWidth - 18 - doc.getTextWidth(finalAmtText);
+      doc.text(finalAmtText, finalAmtX, startY + 10);
 
       // Save the generated PDF
       const formattedDate = new Date().toLocaleDateString().replace(/\//g, '-');
@@ -204,11 +222,11 @@ const ProductList = ({ products, onDelete }) => {
         </table>
       </div>
       <div className="total-payable">
-        <span>Sub Total : </span>
+        <span>Total Amount : </span>
         <span>{calculateTotalPayable().toFixed(2)}</span>
       </div>
       <div className="round-off">
-        <span>Net Payable : </span>
+        <span>Round Off : </span>
         <span>{Math.round(calculateTotalPayable()).toFixed(2)}</span>
       </div>
       <div className="bill-actions">

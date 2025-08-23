@@ -24,10 +24,10 @@
 
 .product-table th,
 .product-table td {
-  padding: 12px 15px;
+  padding: 6px 2px;
   border: 1px solid #000000;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .product-table th {
@@ -52,7 +52,6 @@
 /* Total Payable Styling */
 .total-payable {
   margin-top: 20px;
-  font-size: 1rem;
   font-weight: 600;
   display: flex;
   justify-content: flex-end;
@@ -61,6 +60,7 @@
 }
 
 .round-off {
+  font-weight: 600;
   display: flex;
   justify-content: flex-end;
   /* Align to the right */
@@ -68,12 +68,12 @@
 }
 
 .total-payable span {
-  font-size: 14px !important;
+  font-size: 16px !important;
   color: var(--midBlue);
 }
 
 .round-off span {
-  font-size: 16px !important;
+  font-size: 15px !important;
   color: var(--midBlue);
 }
 
@@ -90,16 +90,16 @@
 
 .shop-info-left input {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 5px;
   width: 200px;
-  font-size: 16px !important;
+  font-size: 14px !important;
   background-color: #f8f9fa;
   color: var(--midBlue);
 }
 
 .shop-info-right span {
-  font-size: 16px !important;
+  font-size: 14px !important;
   color: var(--midBlue);
 }
 
@@ -164,11 +164,11 @@
     font-weight: 500;
   }
 
-  .total-payable  span {
-    font-size: 12px !important;
+  .total-payable .round-off {
+    font-size: 1rem;
   }
 
-  .round-off span {
+  .total-payable span {
     font-size: 14px !important;
   }
 
